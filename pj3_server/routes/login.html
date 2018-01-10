@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Socket.io chat example</title>
+	</head>
+	<body>
+		<div class="containner" style="text-align:center">
+			<form class="form-horizontal">
+				<div class="form-group">
+					<label for ="userid" class="col-sm-2 control-label">ID</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="userid" placeholder="ID">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for ="password" class="col-sm-2 control-label">Password</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="password" placeholder="Password">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-defauolt">Submit</button>
+					</div>
+				</div>
+
+
+			</form>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+		$(function(){
+			var login = io('http://13.125.60.120:3000/login');
+			$("form").submit(function(e){
+				e.preventDefault();
+				
+
+
+				$.get('http://13.125.60.120:3000/login2', {userid:$("#userid").val(),
+													password: $("#password").val()},
+					function(data){
+						if(data.result==1)
+							location.href="/main";
+					});
+			});
+
+			login.on('login result', function(data){
+				if(data.result==1)
+					location.href="/main";
+			});
+		});
+		</script>
+	</body>
+</html>
