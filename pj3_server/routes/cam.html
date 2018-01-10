@@ -27,9 +27,10 @@
 		</div>
 		<div class = "form-group">
 			<div class = "col-sm-offset-2 col-sm-10">
-				<button onclick="stop()" class="btn btn-default">Stop</button>
+				<button onclick="download()" class="btn btn-default">Download</button>
 			</div>
 		</div>
+		<a href="cam/download"> monitor download </a>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 		<script src="/socket.io/socket.io.js"></script>
 		<script>
@@ -47,8 +48,8 @@
 			function right(){
 				dir.emit("direction", {direction:"right"});
 			}
-			function stop(){
-				dir.emit("direction", {direction:"stop"});
+			function download(){
+				
 			}
 		</script>
 	</body>
